@@ -1,0 +1,23 @@
+.jumbotron {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 25px;
+    text-align: center;
+}
+
+body {
+    background-color: rgb(105, 105, 105, 0);
+}
+
+.temp-class {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 25px;
+    border: 2px solid rgb(112, 128, 144);
+    padding: 20px;
+    width: 200px;
+    height: 220px;
+    margin: 0 auto;
+    color: black;
+    background-color: rgb(211, 211, 211);
+    text-transform: capitalize;
+}
