@@ -1,12 +1,17 @@
 var API_KEY = "abcdb27121596f68a22d48fce91a570c";
-// var celc = false;
-// var wdata;
+var celc = false;
+var wdata;
 var loc;
+var cTemp;
+var Temp = true;
+var currentTemp;
 
-// function displayTemp(fTemp,cTemp){
-//   if(cTemp) return (fTemp -32) * (5/9) + "C";
-//   return fTemp + "F"
-// }
+$("#toggleTemp").click(function() {
+  $("#currentTemp").html(
+    Temp ? ((currentTemp - 32) * (5 / 9)).toFixed(2) + "C" : currentTemp + "F"
+  );
+  Temp = !Temp;
+});
 
 $(function() {
   $.getJSON("https://ipinfo.io", function(data) {
@@ -30,9 +35,10 @@ $(function() {
           loc[1] +
           "&APPID=" +
           API_KEY;
+        console.log(wdata);
         var currentLocation = wdata.name;
         var currentWeather = wdata.weather[0].description;
-        var currentTemp = wdata.main.temp;
+        currentTemp = wdata.main.temp;
         var currentHighTemp = wdata.main.temp_max;
         var currentLowTemp = wdata.main.temp_min;
         var currentPressure = wdata.main.pressure;
@@ -43,7 +49,7 @@ $(function() {
 
         $("#currentLocation").html(currentLocation);
         $("#currentWeather").html(currentWeather);
-        $("#currentTemp").html(currentTemp);
+        $("#currentTemp").html(currentTemp + "F");
         $("#currentHighTemp").html(currentHighTemp);
         $("#currentLowTemp").html(currentLowTemp);
         $("#currentPressure").html(currentPressure);
@@ -52,7 +58,7 @@ $(function() {
         $("#tempclass").prepend(
           '<div><img src="' + currentWeatherIconURL + '"</div>'
         );
-        console.log(currentHumidity);
+        //console.log(currentHumidity);
       }
     );
   });
